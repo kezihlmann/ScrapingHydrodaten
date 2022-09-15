@@ -14,7 +14,8 @@ s.login("ke.zihlmann@gmail.com", pw)
 message = "Test"
  
 # sending the mail
-s.sendmail("ke.zihlmann@gmail.com", "kevin.zihlmann@bluewin.ch", message)
+receiver = input('To whom do you want to send the email? Please enter the email-adress.')
+s.sendmail("ke.zihlmann@gmail.com", receiver, message)
  
 # terminating the session
 s.quit()
