@@ -16,7 +16,7 @@ while True:
   f.close()
   f2 = open("abfluss_mellingen.txt", "a")
   f2.write(t)
-  f2.write(" ")
+  f2.write(", ")
   f2.write(abfluss)
   f2.write("\n")
   f2.close()
