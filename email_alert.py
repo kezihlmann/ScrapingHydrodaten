@@ -1,5 +1,16 @@
 import smtplib
 
+with open('email_infos.txt') as f:
+    sender_email = f.readline()
+    sender_pw = f.readline()
+    receiver_email = f.readline()
+
+f.close()
+
+print(sender_email)
+print(sender_pw)
+print(receiver_email)
+
 # creates SMTP session
 s = smtplib.SMTP('smtp.gmail.com', 587)
 
@@ -7,15 +18,13 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls()
  
 # Authentication
-pw = input('What is the password of ke.zihlmann@gmail.com?\n')
-s.login("ke.zihlmann@gmail.com", pw)
+s.login(sender_email, sender_pw)
  
 # message to be sent
 message = "Test"
  
 # sending the mail
-receiver = input('To whom do you want to send the email? Please enter the email-adress.')
-s.sendmail("ke.zihlmann@gmail.com", receiver, message)
+s.sendmail(sender_email, receiver_email, message)
  
 # terminating the session
 s.quit()
