@@ -9,7 +9,7 @@ email_alert = True
 keep_alive()
 
 while True:
-  time.sleep(15)
+  time.sleep(600)
   t, abfluss = get_info()
   
   f = open("abfluss_mellingen.txt", "a")
