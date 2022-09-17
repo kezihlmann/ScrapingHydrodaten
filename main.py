@@ -1,22 +1,24 @@
 from keep_alive import keep_alive
 from get_info import get_info
+from send_email import send_email
 
 import time
+
+email_alert = True
 
 keep_alive()
 
 while True:
   time.sleep(15)
   t, abfluss = get_info()
-
-
-  f = open("time.txt", "a")
-  f.write(time.asctime())
+  
+  f = open("abfluss_mellingen.txt", "a")
+  f.write(t)
+  f.write(", ")
+  f.write(abfluss)
   f.write("\n")
   f.close()
-  f2 = open("abfluss_mellingen.txt", "a")
-  f2.write(t)
-  f2.write(", ")
-  f2.write(abfluss)
-  f2.write("\n")
-  f2.close()
+
+  if email_alert and int(abfluss)>150:
+    send_email(t, abfluss)
+    email_alert = False
