@@ -7,6 +7,10 @@ def get_info():
     soup = BeautifulSoup(html_text, 'lxml')
     table = soup.find('table', class_= 'table table-bordered table-narrow')
     time = table.find('small', class_='text-muted').text
-    abfluss = table.find('td', class_='text-center').text
+    flow_rate = table.find('td', class_='text-center').text
+    water_level = table.find('td', class_='text-center').findNext('td', class_='text-center').text
+    temperature = table.find('td', class_='text-center').findNext('td', class_='text-center').findNext('td', class_='text-center').text
+
+  
     
-    return time, abfluss
+    return time, flow_rate, water_level, temperature
