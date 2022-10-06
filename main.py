@@ -22,7 +22,7 @@ while True:
   f.write("\n")
   f.close()
 
-  if email_alert and int(abfluss)>150:
+  if email_alert and int(abfluss)>220:
     send_email(t, abfluss)
     email_alert = False
 
